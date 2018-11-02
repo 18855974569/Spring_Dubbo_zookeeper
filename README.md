@@ -1,4 +1,5 @@
 # Spring_Dubbo_zookeeper
+zookeper的下载地址：http://www.apache.org/dist/zookeeper/
 
 这里面是个Spring + Dubbo + Zookeep的一个很简单的例子
 其中
