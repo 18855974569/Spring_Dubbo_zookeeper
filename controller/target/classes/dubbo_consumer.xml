@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 添加 DUBBO SCHEMA -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd 
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+
+	<!-- 使用dubbo的另一个原因，可以和 spring 无缝整合 -->
+	<!-- 目的：找到注册中心 ，告诉他我需要什么端口-->
+	
+	<!-- 配置别名，目的是可以看到这个服务的别名，好区别到底是谁，这个参数可以随便写 -->
+	
+	<dubbo:application name ='consumer'/>
+     <!-- 配置注册中心 -->
+    <dubbo:registry id="zk1"  address="114.116.24.32:2181"  protocol="zookeeper" />
+
+    <!-- 用dubbo协议在20880端口暴露服务 -->
+    <dubbo:protocol id="mydubbo"  name="dubbo" port="20880" />
+
+    <!-- 告诉dubbo，需要什么服务 -->
+    <dubbo:reference interface="com.wjx.dubbo.service.TestService" id="testService"></dubbo:reference>
+
+</beans>
